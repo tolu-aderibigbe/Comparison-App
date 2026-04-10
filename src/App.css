@@ -1,0 +1,301 @@
+.body {
+  height: 3000px;
+  background-color: rgb(245, 245, 245);  
+}
+
+.sorting-bar{
+  margin-top: 0px;
+  height: 100px;  
+  border-width: 1px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(198, 197, 197);
+  /* background-color: rgb(198, 197, 197); */
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+}
+
+.left-side-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+}
+
+.type-class {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.price-class {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.by {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(84, 84, 84);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.sorting-button {
+  margin: 10px;
+  margin-top: 0px;
+  width: 200px;
+  height: 35px; 
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-weight: 600;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.reset-button {
+  margin: 10px;
+  background-color: white;
+  margin-top: 0px;
+  width: 100px;
+  height: 35px; 
+  border-width: 1px;
+  border-color: rgb(228, 228, 228);
+  border-radius: 5px;
+  margin-right: 20px;
+  font-weight: 600;
+  color: black;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.cardnum {
+  margin: 20px;
+  font-size: 14px;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.main-body{
+  margin-top: 0px;
+  border: none;
+  /* background-color: rgb(165, 163, 163);   */
+  /* box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.12); */
+}
+
+.comparison-detail {
+  margin: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.card:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.22);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+  transition-duration: 0.15s;
+}
+
+.image {
+  width: 350px;
+  height: auto;
+  display: block;
+  border-bottom: solid;
+  border-color: rgb(157, 153, 153);
+  transform-origin: bottom center;
+  transition-duration: 0.15s;
+}
+
+.card {
+  width: 330px;
+  border-width: 1px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-description {
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
+.cancellation-detail {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  color: red;
+  font-size: 14px;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.service {
+  font-size: 20px;
+  font-weight: 500;
+ font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.service-description {
+  font-size: 14px;
+  margin-top: 10px;
+  color: rgb(74, 70, 70);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.price {
+  font-size: 24px;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.brand {
+  margin-top: 0px;
+  font-size: 14px;
+  color: rgb(74, 70, 70);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.convenience-level {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-top: solid;
+  border-width: 1px;
+  border-color: rgb(206, 205, 205);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  
+}
+
+.reset-button:hover {
+  background-color: rgb(198, 197, 197);
+  transition-duration: 0.15s;
+  cursor: pointer;
+}
+
+.card-section3 {
+  font-size: 10px;
+  border: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  margin: 0px;
+  border-color: rgb(215, 215, 215);
+  display: inline-flex;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.card-section5 {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: auto;
+  margin-bottom: 0px;
+}
+
+.trip {
+  font-size: 14px;
+  margin-left: 7px;
+  color: rgb(74, 70, 70);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.card-section7 {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-code {
+  margin: 1px;
+  padding: 5px;
+  font-weight: 700; 
+  font-size: 10px;
+  color: rgb(74, 70, 70);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.view-details-button {
+  background-color: rgb(41, 41, 65);
+  color: white;
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: 750;
+  font-size: 13px;
+  transition-duration: 0.15s;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.view-details-button:hover {
+  opacity: 0.9;
+  transition-duration: 0.15s;
+  cursor: pointer;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.star {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+.card-section1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating, .no-of-review {
+  font-size: 14px;
+}
+
+.no-of-review {
+  color: rgb(174, 172, 172);
+  margin-left: 4px;
+}
+
+.rating-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating-bar {
+  display: flex;
+  gap: 4px;
+}
+
+.segment-filled {
+ background-color: rgb(41, 41, 65);
+ border: 4px;
+ height: 12px;
+ width: 5px;
+}
+
+.segment-unfilled {
+  width: 5px;
+  height: 12px;
+  border: 4px;
+  background-color: rgb(201, 201, 201);
+}
+
+/* .card-filler {
+  flex: 0 0 330px;
+  visibility: hidden;
+} */

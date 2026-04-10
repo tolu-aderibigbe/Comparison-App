@@ -1,0 +1,130 @@
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+  "wdth" 100;
+}
+
+.header {
+  height: 50px;
+  margin-bottom: 0px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(198, 197, 197);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(228, 228, 228);
+  font-weight: bold;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  border-radius: 20px;
+  color: rgb(84, 84, 84);
+  border: none;
+  background-color: rgb(198, 197, 197);
+  font-weight: bold;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.header-content2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 15px;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  
+}
+
+.header-content3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px; 
+  border-radius: 20px;
+  padding: 16px;
+  border-width: 1px;
+  font-weight: bold; 
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.search-bar {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px; 
+  border-radius:7px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 300px;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
+}
+
+.logo {
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: rgb(198, 197, 197);
+}
+
+.star {
+  color: rgb(238, 104, 14);
+}
+
+.header-content:hover {
+  opacity: 0.6;
+  transition-duration: 0.3s;
+}
+
+.header-content2:hover {
+  opacity: 0.8;
+  transition-duration: 0.55s;
+  cursor: pointer;
+}
+.header-content3:hover {
+  color: white;
+  background-color: black;
+  transition-duration: 0.55s;
+  cursor: pointer;
+}
+
+.search {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  border-width: 1px;
+  background-color: rgb(189, 189, 189);
+  border-radius: 10px;
+}
+
+.search::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.search:hover {
+  color: rgb(74, 74, 74);
+  transition-duration: 0.15s;
+}
+
