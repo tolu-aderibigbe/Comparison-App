@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import "./header.css"
-import "./App.css"
 
-import ferryImage from "./ferry.jpg"
-import carparkImage from "./carpark.jpg"
-import passport from "./passport-2.jpg"
+import React, { useState } from 'react'
+import './header.css'
+import './App.css'
+
+import ferryImage from './ferry.jpg'
+import carparkImage from './carpark.jpg'
+import passport from './passport-2.jpg'
+
+import {
+  ALL_TYPES,
+  DEFAULT_SORT,
+  FILTER_TYPES,
+  SORT_OPTIONS,
+  filterAndSortData,
+} from './filterSort'
 
 const travelData = [
   {
@@ -137,41 +146,20 @@ const travelData = [
     brand: 'TravelSure',
     convenience: 9
   }
-];
+]
 
 export default function App() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filterType, setFilterType] = useState('All Types');
-  const [sortBy, setSortBy] = useState('Price: Low to high');
-  const [showTypeDropdown, setShowTypeDropdown] = useState(false);
-  const [showSortDropdown, setShowSortDropdown] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('')
+  const [filterType, setFilterType] = useState(ALL_TYPES)
+  const [sortBy, setSortBy] = useState(DEFAULT_SORT)
+  const [showTypeDropdown, setShowTypeDropdown] = useState(false)
+  const [showSortDropdown, setShowSortDropdown] = useState(false)
 
-  const filteredAndSortedData = () => {
-    let result = [...travelData];
-
-    // Filter by type
-    if (filterType !== 'All Types') {
-      result = result.filter(item => item.category === filterType);
-    }
-
-    // Sort by selected criteria
-    if (sortBy === 'Price: Low to high') {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortBy === 'Price: High to low') {
-      result.sort((a, b) => b.price - a.price);
-    } else if (sortBy === 'Rating: High to low') {
-      result.sort((a, b) => b.rating - a.rating);
-    } else if (sortBy === 'Rating: Low to high') {
-      result.sort((a, b) => a.rating - b.rating);
-    }
-
-    return result;
-  };
-
-  const displayData = filteredAndSortedData();
-
-  const typeOptions = ['All Types', 'Travel Insurance', 'Airport Lounge', 'Airport Parking'];
-  const sortOptions = ['Price: Low to high', 'Price: High to low', 'Rating: High to low', 'Rating: Low to high'];
+  const displayData = filterAndSortData(
+    travelData,
+    filterType,
+    sortBy
+  )
 
   return (
     <>
@@ -188,22 +176,22 @@ export default function App() {
           z-index: 1000;
           box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        
+
         .dropdown-item {
           padding: 10px 15px;
           cursor: pointer;
           font-family: ui-sans-serif, system-ui, sans-serif;
           font-size: 14px;
         }
-        
+
         .dropdown-item:hover {
           background-color: #f0f0f0;
         }
-        
+
         .dropdown-item.selected {
           background-color: #f0f0f0;
         }
-        
+
         .dropdown-wrapper {
           position: relative;
         }
@@ -214,6 +202,7 @@ export default function App() {
         <button className="header-content">Airport extras</button>
         <button className="header-content">Travel Insurance</button>
         <button className="header-content">Other Extras</button>
+
         <div className="search">
           <span className="material-symbols-outlined">search</span>
           <input
@@ -224,6 +213,7 @@ export default function App() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
+
         <button className="header-content">Log in</button>
         <button className="header-content">Sign Up</button>
         <button className="header-content2">Get Started</button>
@@ -234,25 +224,29 @@ export default function App() {
         <div className="left-side-bar">
           <div className="type-class">
             <p className="by">Filter by type</p>
+
             <div className="dropdown-wrapper">
-              <button 
+              <button
                 className="sorting-button"
                 onClick={() => {
-                  setShowTypeDropdown(!showTypeDropdown);
-                  setShowSortDropdown(false);
+                  setShowTypeDropdown(!showTypeDropdown)
+                  setShowSortDropdown(false)
                 }}
               >
                 {filterType}
               </button>
+
               {showTypeDropdown && (
                 <div className="dropdown-menu">
-                  {typeOptions.map((option) => (
+                  {FILTER_TYPES.map((option) => (
                     <div
                       key={option}
-                      className={`dropdown-item ${filterType === option ? 'selected' : ''}`}
+                      className={`dropdown-item ${
+                        filterType === option ? 'selected' : ''
+                      }`}
                       onClick={() => {
-                        setFilterType(option);
-                        setShowTypeDropdown(false);
+                        setFilterType(option)
+                        setShowTypeDropdown(false)
                       }}
                     >
                       {option}
@@ -262,27 +256,32 @@ export default function App() {
               )}
             </div>
           </div>
+
           <div className="price-class">
             <p className="by">Sort by</p>
+
             <div className="dropdown-wrapper">
-              <button 
+              <button
                 className="sorting-button"
                 onClick={() => {
-                  setShowSortDropdown(!showSortDropdown);
-                  setShowTypeDropdown(false);
+                  setShowSortDropdown(!showSortDropdown)
+                  setShowTypeDropdown(false)
                 }}
               >
                 {sortBy}
               </button>
+
               {showSortDropdown && (
                 <div className="dropdown-menu">
-                  {sortOptions.map((option) => (
+                  {SORT_OPTIONS.map((option) => (
                     <div
                       key={option}
-                      className={`dropdown-item ${sortBy === option ? 'selected' : ''}`}
+                      className={`dropdown-item ${
+                        sortBy === option ? 'selected' : ''
+                      }`}
                       onClick={() => {
-                        setSortBy(option);
-                        setShowSortDropdown(false);
+                        setSortBy(option)
+                        setShowSortDropdown(false)
                       }}
                     >
                       {option}
@@ -293,12 +292,13 @@ export default function App() {
             </div>
           </div>
         </div>
+
         <div className="right-side-bar">
           <button
             className="reset-button"
             onClick={() => {
-              setFilterType('All Types');
-              setSortBy('Price: Low to high');
+              setFilterType(ALL_TYPES)
+              setSortBy(DEFAULT_SORT)
             }}
           >
             Reset Filter
@@ -314,15 +314,24 @@ export default function App() {
         <div className="comparison-detail">
           {displayData.map((item) => (
             <div key={item.id} className="card">
-              <img className="image" src={item.image} alt={item.service} />
+              <img
+                className="image"
+                src={item.image}
+                alt={item.service}
+              />
 
               <div className="card-description">
                 <div className="card-section1">
-                  <p className="cancellation-detail">{item.cancellation}</p>
+                  <p className="cancellation-detail">
+                    {item.cancellation}
+                  </p>
+
                   <p className="reviews">
                     <span className="star">&#9733;</span>
                     <span className="rating">{item.rating}</span>
-                    <span className="no-of-review">({item.reviews})</span>
+                    <span className="no-of-review">
+                      ({item.reviews})
+                    </span>
                   </p>
                 </div>
 
@@ -335,11 +344,15 @@ export default function App() {
                 </div>
 
                 <div className="card-section4">
-                  <p className="service-description">{item.description}</p>
+                  <p className="service-description">
+                    {item.description}
+                  </p>
                 </div>
 
                 <div className="card-section5">
-                  <span className="price">£{item.price.toFixed(2)}</span>
+                  <span className="price">
+                    £{item.price.toFixed(2)}
+                  </span>
                   <span className="trip">per trip</span>
                 </div>
 
@@ -356,22 +369,30 @@ export default function App() {
                     {[...Array(10)].map((_, i) => (
                       <span
                         key={i}
-                        className={i < item.convenience ? 'segment-filled' : 'segment-unfilled'}
+                        className={
+                          i < item.convenience
+                            ? 'segment-filled'
+                            : 'segment-unfilled'
+                        }
                       ></span>
                     ))}
                   </div>
 
-                  <span className="card-rating">{item.convenience}/10</span>
+                  <span className="card-rating">
+                    {item.convenience}/10
+                  </span>
                 </div>
               </div>
 
               <div className="card-section7">
-                <button className="view-details-button">View Details</button>
+                <button className="view-details-button">
+                  View Details
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
     </>
-  );
+  )
 }
