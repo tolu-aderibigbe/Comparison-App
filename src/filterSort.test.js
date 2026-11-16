@@ -227,4 +227,180 @@ describe('filterAndSortData', () => {
       ])
     })
   })
+
+  // --------------------------------
+  // 5. SEARCHING
+  // --------------------------------
+
+  describe('Searching', () => {
+    const searchData = [
+      {
+        id: 1,
+        service: 'Meet & Greet Parking',
+        brand: 'Premium Travel',
+        category: 'Airport Parking',
+        price: 30,
+        rating: 4.5,
+      },
+      {
+        id: 2,
+        service: 'Executive Lounge',
+        brand: 'Airport Plus',
+        category: 'Airport Lounge',
+        price: 20,
+        rating: 4.8,
+      },
+      {
+        id: 3,
+        service: 'Premium Travel Cover',
+        brand: 'Safe Travels',
+        category: 'Travel Insurance',
+        price: 50,
+        rating: 4.2,
+      },
+      {
+        id: 4,
+        service: 'Standard Parking',
+        brand: 'City Travel',
+        category: 'Airport Parking',
+        price: 40,
+        rating: 4.8,
+      },
+    ]
+
+    it('matches products using their service name', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'Meet'
+      )
+
+      expect(getServices(result)).toEqual([
+        'Meet & Greet Parking',
+      ])
+    })
+
+    it('matches products using their brand', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'Safe Travels'
+      )
+
+      expect(getServices(result)).toEqual([
+        'Premium Travel Cover',
+      ])
+    })
+
+    it('matches products using their category', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'Airport Parking'
+      )
+
+      expect(getServices(result)).toEqual([
+        'Meet & Greet Parking',
+        'Standard Parking',
+      ])
+    })
+
+    it('ignores uppercase and lowercase differences', () => {
+      const lowerCaseResult = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'premium'
+      )
+
+      const upperCaseResult = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'PREMIUM'
+      )
+
+      expect(upperCaseResult).toEqual(lowerCaseResult)
+      expect(getServices(upperCaseResult)).toEqual([
+        'Meet & Greet Parking',
+        'Premium Travel Cover',
+      ])
+    })
+
+    it('returns all products when the search is empty', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        ''
+      )
+
+      expect(result).toHaveLength(4)
+    })
+
+    it('returns all products when the search contains only whitespace', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        '   '
+      )
+
+      expect(result).toHaveLength(4)
+    })
+
+    it('returns an empty array when no products match the search', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'Nonexistent'
+      )
+
+      expect(result).toEqual([])
+    })
+
+    it('combines search with the selected category filter', () => {
+      const result = filterAndSortData(
+        searchData,
+        'Airport Parking',
+        DEFAULT_SORT,
+        'Meet'
+      )
+
+      expect(getServices(result)).toEqual([
+        'Meet & Greet Parking',
+      ])
+    })
+
+    it('combines search with sorting', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        'Price: High to low',
+        'Parking'
+      )
+
+      expect(getServices(result)).toEqual([
+        'Standard Parking',
+        'Meet & Greet Parking',
+      ])
+    })
+
+    it('matches partial service names', () => {
+      const result = filterAndSortData(
+        searchData,
+        ALL_TYPES,
+        DEFAULT_SORT,
+        'Greet'
+      )
+
+      expect(getServices(result)).toEqual([
+        'Meet & Greet Parking',
+      ])
+    })
+  })
 })

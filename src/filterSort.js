@@ -19,7 +19,6 @@ export const SORT_OPTIONS = [
 ]
 
 // Lookup object containing the sorting functions.
-// Each function compares two products and returns the sort result.
 const SORT_COMPARATORS = {
   [DEFAULT_SORT]: (a, b) => a.price - b.price,
 
@@ -31,14 +30,32 @@ const SORT_COMPARATORS = {
 }
 
 // Pure function: filters and sorts data without modifying the original array.
-export function filterAndSortData(data, filterType, sortBy) {
+export function filterAndSortData(
+  data,
+  filterType,
+  sortBy,
+  searchQuery = ''
+) {
   let result = [...data]
 
-  // Filter by category
+  // Filter by category dropdown
   if (filterType !== ALL_TYPES) {
     result = result.filter(
       (item) => item.category === filterType
     )
+  }
+
+  // Filter by search query
+  const query = searchQuery.trim().toLowerCase()
+
+  if (query) {
+    result = result.filter((item) => {
+      return (
+        item.service?.toLowerCase().includes(query) ||
+        item.brand?.toLowerCase().includes(query) ||
+        item.category?.toLowerCase().includes(query)
+      )
+    })
   }
 
   // Sort using the selected comparator

@@ -28,7 +28,8 @@ export default function App() {
   const displayData = filterAndSortData(
     travelData,
     filterType,
-    sortBy
+    sortBy,
+    searchQuery
   )
 
   return (
@@ -62,6 +63,7 @@ export default function App() {
         onReset={() => {
           setFilterType(ALL_TYPES)
           setSortBy(DEFAULT_SORT)
+          setSearchQuery('')
         }}
         filterTypes={FILTER_TYPES}
         sortOptions={SORT_OPTIONS}
